@@ -25,6 +25,7 @@
 		}
 
 		$(function () {
+      $("#front_img_src").on("change", handleImgFileSelect);
 
 			$(".phone-number-check").on('keydown', function (e) {
 				// 숫자만 입력받기
@@ -86,6 +87,9 @@
 			return ele.checked;
 		}
 
+    function imgOnclick(id) {
+      $("#"+id).click();
+    }
 
 		function save() {
 			var front_img_src = getValue("front_img_src");
@@ -214,7 +218,29 @@
 
 			form1.submit();
 		}
+    
+    var sel_file;
+    
+    function handleImgFileSelect(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
 
+        filesArr.forEach(function(f) {
+            if(!f.type.match("image.*")) {
+                alert("확장자는 이미지 확장자만 가능합니다.");
+                return;
+            }
+
+            sel_file = f;
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#front-img-btn").css({"background-image": "url("+e.target.result+")"});
+                $("#front-img-btn").css({"background-size": "6.389rem 6.389rem"});
+            }
+            reader.readAsDataURL(f);
+        });
+    }
 	</script>
 </head>
 
@@ -261,7 +287,7 @@
 							<div class="input-group">
 								<label for="" class=""><b>정면 사진</b><br/> 1장을 올려주세요.</label>
 								<input type="file" name="front_img_src" id="front_img_src" accept="image/*" style="display: none;">
-								<div class="front-img-btn" onclick="onclick=document.all.file.click()"></div>
+								<div class="front-img-btn" id="front-img-btn" onclick="imgOnclick('front_img_src')"></div>
 							</div>
 						</div>
 						<div class="mb-3">
