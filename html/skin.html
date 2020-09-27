@@ -251,27 +251,32 @@
     ">
 				<div class="col-md-8 order-md-1" style="padding:0;">
 					<div class="mb-3">
-						<img class="img-fluid d-block mx-auto" src="../img/header_neo_s.jpg" style="width: 100%;">
+						<!-- <img class="img-fluid d-block mx-auto" src="../img/header_neo_s.jpg" style="width: 100%;"> -->
 					</div>
 				</div>
 				<div class="col-md-8 order-md-1">
 					<h5><b>사진 업로드</b> 해주세요</h5>
-					<div class="mb-3">
-						<div class="input-group">
-							<label for="" class="">1.정면 사진 1장을 올려주세요.</label>
-							<input type="file" name="front_img_src" id="front_img_src" accept="image/*">
+					<div class="form-image-box">
+						<div class="mb-3">
+							<div class="input-group">
+								<label for="" class=""><b>정면 사진</b><br/> 1장을 올려주세요.</label>
+								<input type="file" name="front_img_src" id="front_img_src" accept="image/*" style="display: none;">
+								<div class="front-img-btn" onclick="onclick=document.all.file.click()"></div>
+							</div>
 						</div>
-					</div>
-					<div class="mb-3">
-						<div class="input-group">
-							<label for="" class="">2.좌측 사진 1장을 올려주세요.</label>
-							<input type="file" name="left_img_src" id="left_img_src" accept="image/*">
+						<div class="mb-3">
+							<div class="input-group">
+								<label for="" class=""><b>좌측 사진</b><br/> 1장을 올려주세요.</label>
+								<input type="file" name="left_img_src" id="left_img_src" accept="image/*" style="display: none;">
+								<div class="front-img-btn" onclick="onclick=document.all.file.click()"></div>
+							</div>
 						</div>
-					</div>
-					<div class="mb-3">
-						<div class="input-group">
-							<label for="" class="">3.우측 사진 1장을 올려주세요.</label>
-							<input type="file" name="right_img_src" id="right_img_src" accept="image/*">
+						<div class="mb-3">
+							<div class="input-group">
+								<label for="" class=""><b>우측 사진</b><br/> 1장을 올려주세요.</label>
+								<input type="file" name="right_img_src" id="right_img_src" accept="image/*" style="display: none;">
+								<div class="front-img-btn" onclick="onclick=document.all.file.click()"></div>
+							</div>
 						</div>
 					</div>
 					<div class="mb-3">
