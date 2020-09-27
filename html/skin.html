@@ -240,7 +240,31 @@
             }
             reader.readAsDataURL(f);
         });
-    }
+	}
+	
+	function agreeAll() {
+		if ($("#agreeall").is(":checked")) {
+			$("#agreeGrp input").each(function (i, idx) {
+				console.log(idx);
+				$(idx).attr("checked", true);
+			});
+		} else {
+			$("#agreeGrp input").each(function (i, idx) {
+				console.log(idx);
+				$(idx).removeAttr("checked");
+			});
+		}
+	}
+
+	function agreeAllCheck() {
+		var flag = true;
+		$("#agreeGrp input").each(function (i, idx) {
+			if (!$(idx).is(":checked")) {
+				flag = false;
+			}
+		});
+		$("agreeall").attr("checked", flag);
+	}
 	</script>
 </head>
 
@@ -438,23 +462,24 @@
 								value="1"> <label class="custom-control-label" for="trouble10">다크서클</label> </div> -->
 					</div>
 					<hr class="mb-1">
-
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="agreeall" id="agreeall" value="1"><label
-							class="custom-control-label" for="agreeall">전체 동의</label>
+						<input type="checkbox" class="custom-control-input" name="agreeall" id="agreeall" onclick="agreeAll()">
+						<label class="custom-control-label" for="agreeall">전체 동의</label>
 					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="ageover" id="ageover" value="1"><label
-							class="custom-control-label" for="ageover">(필수) 만 14세 이상 확인</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="agree" id="agree" value="1"><label
-							class="custom-control-label" for="agree">(필수) </label>
-						<a href="#" style="color: orange;" data-toggle="modal" data-target="#myModal">개인정보 취급방침 동의 </a>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="marketing" id="marketing"
-							value="1"><label class="custom-control-label" for="marketing">(선택) 마케팅 활용 동의</label>
+					<div id="agreeGrp">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" name="ageoverNm" id="ageover" onclick="agreeAllCheck()">
+							<label class="custom-control-label" for="ageover">(필수) 만 14세 이상 확인</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" name="agreeNm" id="agree" onclick="agreeAllCheck()">
+							<label class="custom-control-label" for="agree">(필수) </label>
+							<a href="#" style="color: orange;" data-toggle="modal" data-target="#myModal">개인정보 취급방침 동의 </a>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" name="marketingNm" id="marketing" onclick="agreeAllCheck()">
+							<label class="custom-control-label" for="marketing">(선택) 마케팅 활용 동의</label>
+						</div>
 					</div>
 					<hr class="mb-1" style="margin-top: revert;">
 					<button class="btn btn-primary btn-lg btn-block" type="button" onclick="save()">저장</button>
