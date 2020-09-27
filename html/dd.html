@@ -1,0 +1,313 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/com/lemonBox/cmmn/common_lib.jsp" %>
+
+
+<style>
+
+.mainPop {
+	position:absolute;
+	top:0;
+	left:0;
+	width:auto;
+	height:auto;
+	background-image:url(../img/main/landingpopup_pc.jpg) !important;
+	margin:0 auto;
+	z-index: -9999;
+}
+
+</style>
+
+<script>
+
+$(document).ready(function() {
+	// slide ////////////////////////////////////////////////////////////
+	var lbLanding_mission = $('.lbLanding .mission .owl-carousel');
+	lbLanding_mission.owlCarousel({
+		loop:true,
+		autoplay:true,
+		autoplayTimeout:1500,
+		dots:false,
+		// smartSpeed:200,
+		responsiveRefreshRate:0,
+		animateOut:'fadeOut'
+	});
+
+	// 슬라이드 클릭넘김
+	$('.lbLanding .mission .owl-carousel .item').click(function() {
+		lbLanding_mission.trigger('next.owl.carousel');
+	});
+
+	// AOS ////////////////////////////////////////////////////////////
+	AOS.init({
+		duration: 1500,
+		delay: 500
+	});
+	
+	/* 팝업 START */
+	var result = cookie.getCookie('lemonbox');
+	
+	if (result == 'end') {
+		   return false;
+		}
+		else {
+			$('#POP_notice').bPopup();
+		}
+	/* 팝업 End */
+});
+
+	function closePop() {     
+		
+		cookie.setCookie('lemonbox', 'end', 1);
+		$('#POP_notice').bPopup().close();
+	}
+
+var landing = {
+		startCoordi : function() {
+			var sessionInfo = "<c:out value='${mbrVO.mbrNo}'/>";
+			
+			$.ajax({
+				url		: "<c:url value='/getMbrTestInfo.do'/>",
+				type	: "POST",
+				data	: {"mbrNo" : sessionInfo},
+				async	: false,
+				
+				success : function(resultMap) {
+					if(resultMap != null && resultMap.mbrTestNo != null && resultMap.mbrTestNo != undefined) {
+						location.href="<c:url value='/coordiApply.do'/>";
+					} else {
+						location.href="<c:url value='/testStart.do'/>";
+					}
+				}
+			})
+		}
+}
+</script>
+  <!-- container -->
+  <!-- [D] 메뉴바 있을경우 class="ifNav" 추가 -->
+  <section id="container" class="main">
+  <!--// [D] 메뉴바 있을경우 class="ifNav" 추가 -->
+	<!-- contents -->
+	<div id="contents" class="lbLanding">
+		<!-- 상단 -->
+		<section class="top">
+			<div class="content_wrap ta-c">
+				<h2 class="tit01 ff-arial">Lemon box.</h2>
+				<p class="mb"><strong style="font-size: 50px !important;">매일 돈 버는 비타민 습관, 레몬박스</strong></p>
+				<p class="pc"><strong>매일 돈 버는 비타민 습관, 레몬박스</strong></p>
+				<p>나에게 필요한 비타민/영양제만 쏙쏙 골라<br>건강한 라이프 스타일 시작!</p>
+				<br>
+				<button type="button" class="btn type01 none" onclick="location.href='<c:url value="/coordiApply.do"/>'">시작하기</button>
+			</div>
+		</section>
+		<!--// 상단 -->
+		
+		<!-- 레몬박스 진행과정 -->
+		<section class="step">
+			<div class="content_wrap">
+				<h3 class="tit">레몬박스 진행과정</h3>
+				<ul class="clearfix">
+					<li data-aos="fade-in" data-aos-delay="200">
+						<i class="ico-step02"></i>
+						<em>1:1 비타민 코디</em>
+						<p>레몬박스를 신청하세요!<br>당신만을 위한 1:1 코디가 진행됩니다.</p>
+						<div class="arrow_wrap">
+							<span class="arrow first"></span>
+							<span class="arrow secound"></span>
+							<span class="arrow third"></span>
+						</div>
+					</li>
+					<li data-aos="fade-in" data-aos-delay="500">
+						<i class="ico-step04"></i>
+						<em>주문결제/제품수령</em>
+						<p>결과 확인 후 당신의 라이프스타일에<br>필요한 제품을 최저가로 구입하세요!</p>
+						<div class="arrow_wrap">
+							<span class="arrow first"></span>
+							<span class="arrow secound"></span>
+							<span class="arrow third"></span>
+						</div>
+					</li>
+					<li data-aos="fade-in" data-aos-delay="800">
+						<i class="ico-step01"></i>
+						<em>섭취 알람</em>
+						<p>잊기 쉬운 비타민, 꾸준히 섭취할 수<br>있게 매일 오후 2시 알람을 받으세요!</p>
+						<div class="arrow_wrap">
+							<span class="arrow first"></span>
+							<span class="arrow secound"></span>
+							<span class="arrow third"></span>
+						</div>
+					</li>
+					<li data-aos="fade-in" data-aos-delay="1100">
+						<i class="ico-step03"></i>
+						<em>적립 미션</em>
+						<p>비타민 섭취 후 미션 체크시 현금처럼<br>쓸 수 있는 레몬캐시가 적립됩니다.</p>
+					</li>
+				</ul>
+				<div class="btn_wrap" style="padding-top: 50px; vertical-align: middle; text-align: center;">
+					<button type="button" class="btn type01" style="margin: 50 auto !important;" onclick="location.href='<c:url value="/help.do"/>'">자세히 알아보기</button>
+				</div>
+			</div>
+		</section>
+		<!--// 레몬박스 진행과정 -->
+		
+		<!-- 비타민 코디 영역2 -->
+		<section class="coordi02">
+			<div class="p-r clearfix">
+				<div class="img">
+					
+				</div>
+				<div class="f-l">
+					<h3 class="tit01">레몬박스와 함께하면<br><em class="fw-mid">비타민/영양제 걱정은 그만</em></h3>
+					<div class="owl-wrapper">
+						<div class="owl-carousel">
+							<div class="item">
+								<em>취향 담은 맞춤 비타민</em>
+								<p>
+									비타민, 너무 어렵죠?<br>
+									걱정 마세요. 전문 코디가 회원님께 꼭 맞는 <br>
+									제품을 1:1로 만족할 때까지 찾아드려요
+								</p>
+							</div>
+							<div class="item">
+								<em>띵동! 비타민 드세요!</em>
+								<p>
+									챙겨 먹을 때보다 까먹을 때가 더 많은 비타민.<br>
+									매일 잊지 않게 레몬박스가 알려드려요.<br>
+									나른한 오후 2시. 카카오톡 알람을 기다려주세요.
+								</p>
+							</div>
+							<div class="item">
+								<em>건강 챙기고! 캐시 챙기고!</em>
+								<p>
+									비타민 한 통 먹기. 왜 이리 힘들까요?<br>
+									꾸준히 먹을 수 있게 레몬박스가 동기부여 팍팍!<br>
+									섭취시마다 현금처럼 쓸 수 있는 캐시를 드려요.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="btn_wrap" style="padding-top: 50px; vertical-align: middle; text-align: center;">
+						<button type="button" class="btn type01" onclick="location.href='reviewList.do'">서비스 후기</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--// 비타민 코디 영역2 -->
+
+		<!-- 나만을 위한 1:1 비타민 코디! -->
+		<section class="coordi bg-type01">
+			<div class="content_wrap">
+				<div class="txt_wrap">
+					<h3 class="tit">나만을 위한 1:1 비타민 코디!</h3>
+					<span class="subTit">취향을 담은 비타민이 진짜 맞춤 비타민</span>
+					<div class="txt" style="margin-top: 40px;">
+						당신의 라이프스타일에<br>
+						꼭 필요한 제품을 추천받아보세요.<br>
+						크기, 향, 가격, 제형까지 고려해서 찾아드려요. <br>
+						당연히 모든 제품은 인터넷 최저가로 제공!<br>
+						(배송비 포함, 네이버 쇼핑, 아이허브 가격 기준)
+					</div>
+					<button type="button" class="btn type01" onclick="location.href='<c:url value="/coordiApply.do"/>'">레몬박스 시작하기</button>
+				</div>
+
+				<div class="caution">
+					&#x203B; 비타민 코디네이팅 유의사항<br>
+					모든 제품은 추천 전, 전문 약사가 최종 검토합니다.<br class="din">
+					상담 후 48시간 이내 미결제 시 코디 내역이 삭제됩니다
+				</div>
+
+				<div class="phone" data-aos="fade-up">
+					<div class="inner" data-aos="fade-up" data-aos-delay="1000">
+						<div class="q clearfix">
+							<span>Q</span>
+							<p class="fw-light">알약이 크면 잘 못 먹어요.<br>작고 삼키기 쉬운 비타민 있나요?</p>
+						</div>
+						<div class="a clearfix">
+							<span>A</span>
+							<p>고객님에게 필요한 건강관리요소 중 1cm 이하의 작은 제품으로 찾아드릴게요!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--// 나만을 위한 1:1 비타민 코디! -->
+
+		<!-- 레몬 캐시가 쌓이는 섭취 미션! -->
+		<section class="mission clearfix">
+			<div class="owl-wrapper">
+				<div class="owl-carousel">
+					<div class="item bg01"></div>
+					<div class="item bg02"></div>
+					<div class="item bg03"></div>
+				</div>
+			</div>
+			<div class="txt_wrap">
+				<div class="inner">
+					<h3 class="tit">레몬 캐시가 쌓이는 섭취 미션!</h3>
+					<span class="subTit">비타민 먹고 체크하면 레몬캐시가 팡팡.</span>
+					<div class="txt" style="margin-top: 40px;">
+						매일 오후 두 시엔 레몬 캐시를 적립하세요.<br> 
+						복용 알람을 받아 미션을 달성하면<br>
+						현금처럼 쓸 수 있는 레몬캐시를 드립니다.<br>
+						연속 미션 달성하면 보너스까지 팡팡!<br>
+						(섭취 미션은 레몬박스에서 구매한 제품만 가능)
+					</div>
+					<button type="button" class="btn type01" onclick="location.href='<c:url value="/coordiApply.do"/>'">레몬박스 시작하기</button>
+				</div>
+			</div>
+		</section>
+		<!--// 레몬 캐시가 쌓이는 섭취 미션! -->
+
+		<!-- 하단 -->
+		<section class="bot">
+			<div class="content_wrap">
+				<h3 class="tit" data-aos="fade-up">매일 매일 가득한 활기 <br class="mb">지금 경험하세요!</h3>
+				<p>레몬박스로 당신의 일상이<br>레몬처럼 상큼해집니다.</p>
+				<button type="button" class="btn type01" onclick="location.href='<c:url value="/coordiApply.do"/>'">레몬박스 시작하기</button>
+			</div>
+		</section>
+		<!--// 하단 -->
+	</div>
+	<!--// contents -->
+  </section>
+  <!--// container -->
+	<section id="POP_notice" class="bPop type01 line01">
+		<section class="pc" style="left:100px !important;top:50px !important;width:800px !important;height:850px !important;">
+			<div class="con_wrap" style="min-height: 650px !important;">
+				<div class="con">
+					<div class="txt lt01">
+						<img src="common/img/main/landingpopup_pc.jpg"/>
+					</div>
+				</div>
+			</div>
+			<div class="bot">
+				<button type="button" class="btn b-close" style="width: 50%; float: left; background-color: #ffd700;">확인</button>
+				<button type="button" class="btn" id="todayPop" onClick="closePop()" style="width: 50%; float: left;background-color: #0000001f;">오늘 하루 그만보기</button>
+			</div>
+		</section>
+		<section class="mb" style="left:10px !important;top:50px !important;width:520px !important;height:750px !important;">		
+			<div class="con_wrap">
+				<div class="con">
+					<div class="txt lt01" style="padding-top: 0;padding-bottom: 0;">
+						<img src="common/img/main/landingpopup_mobile.jpg" style="width: 500px;height: 700px;"/>
+					</div>
+				</div>
+			</div>
+			<div class="bot">
+				<button type="button" class="btn b-close" style="width: 50%; float: left; background-color: #ffd700;">확인</button>
+				<button type="button" class="btn" id="todayPop" onClick="closePop()" style="width: 50%; float: left;background-color: #0000001f;">오늘 하루 그만보기</button>
+			</div>
+		</section>
+	</section>
+<!-- <section id="POP_notice" class="bPop type01 line01 mb">
+	<div class="con_wrap">
+		<div class="con">
+			<div class="txt lt01">
+				<img src="common/img/main/landingpopup_mobile.jpg"/>
+			</div>
+		</div>
+	</div>
+	<div class="bot">
+		<button type="button" class="btn b-close">확인</button>
+	</div>
+</section> -->
