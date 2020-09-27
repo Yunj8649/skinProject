@@ -9579,6 +9579,12 @@ body {
 	justify-content: space-between;
 }
 .clearfix:after{content:'';display:block;clear:both;}
+.select-box2 {
+
+}
+.select-box3 {
+
+}
 .form-btn {
 	padding: 0.8rem;
 	font-family: NotoSansCJKkr;
@@ -9646,6 +9652,10 @@ body {
 	background-position: center;
 	margin: auto;	
 	padding: 1.6rem;
+}
+
+.front-img-btn.active {
+	border: solid 1.5px #b9b9b9;
 }
 
 @media (min-width: 576px) {

@@ -1,0 +1,165 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/com/lemonBox/cmmn/common_lib.jsp" %>
+
+<style>
+	#socialJoinBtn {
+		cursor : not-allowed;
+	}
+</style>
+
+<script type="text/javascript">
+var joinAgree = {
+		
+	agreeChkFn		: function() {
+		var $chkAgree 	= $("[name='chk_agree']"),
+			$chkAll		= $("[name='chk_agree_all']");
+		
+		$chkAll.on("ifChanged touchend", function (event) {
+			
+			if ($(this).is(":checked")) {
+				$chkAgree.iCheck("check");
+				
+				joinAgree.joinAgreeActive();
+			} else if (!$(this).is(":checked")) {
+				$chkAgree.prop("checked", false);
+				$chkAgree.parent().removeClass("checked");
+				
+				joinAgree.joinAgreeActive();
+			}
+		});
+		
+		$chkAgree.on("ifChanged touchend", function () {
+			if (!$(this).is(":checked")) {
+				$chkAll.prop("checked", false);
+				$chkAll.parent().removeClass("checked");
+				
+				joinAgree.joinAgreeActive();
+			} else {
+				
+				joinAgree.joinAgreeActive();
+			}
+		});
+	},
+	
+	joinAgreeActive 	: function() {
+		var essnChk = false,
+			validChk = false;
+		
+		if (cmmn.isEmail($("#socialEmail").val())) {
+			validChk = true;
+		} else {
+			validChk = false;
+		}
+
+		$("input.must").each(function(i, idx) {
+			if ($(idx).is(":checked")) {
+				essnChk = true;
+			} else {
+				essnChk = false;
+				
+				return essnChk;
+			}
+		})
+		
+		if (essnChk && validChk) {
+			
+			$("#socialJoinBtn").prop("disabled", false);
+			$("#socialJoinBtn").css("cursor", "pointer");
+			$("#socialJoinBtn").addClass("active");
+		} else {
+			$("#socialJoinBtn").prop("disabled", true);
+			$("#socialJoinBtn").css("cursor", "not-allowed");
+			$("#socialJoinBtn").removeClass("active");
+		} 
+	}
+}
+$(function() {
+	joinAgree.agreeChkFn();
+	
+	joinAgree.joinAgreeActive();
+	
+	$("#socialJoinBtn").on("click touchend",function() {
+		var chkArr = [];
+		
+		$(".chkYn").each(function() {
+			
+			if ($(this).prop("checked")) {
+				chkArr.push($(this).data("agree"));
+			}
+		});
+		
+		$("#chkAgree").val(chkArr);
+
+		$("#socialAgree").submit();
+	});
+})
+</script>
+<section id="container">
+	<!-- contents -->
+	<div id="contents" class="join step02">
+		<section class="content_wrap">
+			<h2 class="tit01">서비스 이용약관 동의</h2>
+			<div class="box">
+				<form id="socialAgree" method="post" action="/joinDetail.do">
+					<ul class="lst_inp">
+						<!-- [D] ID유효성검사에 따른 클래스 추가
+							디폴트 : 없음
+							에러 : err
+							적합 : correct -->
+						<li class="correct">
+						<!--// [D] ID유효성검사에 따른 클래스 추가 -->
+							<fieldset>
+								<legend>아이디 입력</legend>
+								<div class="inp_wrap">
+									<i class="ico-err" id="emailErrorIco" style="display:none;"></i>
+									<i class="ico-correct" id="emailCorrectIco" 
+										<c:if test="${socialInfo.isSocial ne 'N' }">
+											style="display:none;"
+										</c:if>
+									></i>
+									<input type="text" name="socialEmail" id="socialEmail" class="inp_txt type01" placeholder="아이디(이메일)" value="<c:out value='${socialInfo.socialEmail}'/>"
+										<c:if test="${socialInfo.isSocial eq 'N' }">
+											readonly="readonly"
+										</c:if>
+									>
+								</div>
+								
+								<!-- [D] 유효성검사에 따른 분기처리 -->
+								<div class="errMsg">
+									<div class="msg">유효하지 않은 이메일입니다.</div>
+								</div>
+								<!--// [D] 유효성검사에 따른 분기처리 -->
+							</fieldset>
+						</li>
+					</ul>
+					<div class="agree_tit">
+						<input type="checkbox" name="chk_agree_all" id="inp_chk00" class="inp_chk type01 big">
+						<label for="inp_chk00"><span class="va-b">전체 동의</span></label>
+					</div>
+					<ul class="lst_shdbox clearfix">
+						<li>
+							<input type="checkbox" name="chk_agree" id="inp_chk01" class="inp_chk type01 must chkYn" data-agree="1">
+							<label for="inp_chk01"><span class="ellipsis va-b">이용약관 동의(필수)</span></label>
+							<a href="/policy.do" class="btnLink type03">내용보기&gt;</a>
+						</li>
+						<li>
+							<input type="checkbox" name="chk_agree" id="inp_chk02" class="inp_chk type01 must chkYn" data-agree="2">
+							<label for="inp_chk02"><span class="ellipsis va-b">개인정보 수집 및 이용 동의(필수)</span></label>
+							<a href="/personalPolicy.do" class="btnLink type03">내용보기&gt;</a>
+						</li>
+						<li>
+							<input type="checkbox" name="chk_agree" id="inp_chk03" class="inp_chk type01 chkYn" data-agree="3">
+							<label for="inp_chk03"><span class="ellipsis va-b">이벤트 등 알림 메일 수신(선택)</span></label>
+						</li>
+					</ul>
+					<input type="hidden" name="chkAgree" id="chkAgree" value="">	
+					<input type="hidden" name="socialName" id="socialName" value="<c:out value='${socialInfo.socialName }'/>"/>
+					<input type="hidden" name="isSocial" id="isSocial" value="<c:out value='${socialInfo.isSocial }'/>"/>
+					<button class="btn type01 long" id="socialJoinBtn" disabled="disabled">동의하고 회원가입</button>
+				</form>
+			</div>
+		</section>
+	</div>
+	<!--// contents -->
+</section>

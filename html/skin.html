@@ -287,7 +287,7 @@
 							<div class="input-group">
 								<label for="" class=""><b>정면 사진</b><br/> 1장을 올려주세요.</label>
 								<input type="file" name="front_img_src" id="front_img_src" accept="image/*" style="display: none;">
-								<div class="front-img-btn" id="front-img-btn" onclick="imgOnclick('front_img_src')"></div>
+								<div class="front-img-btn on" id="front-img-btn" onclick="imgOnclick('front_img_src')"></div>
 							</div>
 						</div>
 						<div>
@@ -322,20 +322,20 @@
 
 					<div class="mb-3">
 						<h5><b>성별</b>을 선택해주세요.</h5>
-						<ul id="q2" class="a clearfix">
+						<ul id="q2" class="a clearfix select-box2">
 							<li><button id="female" class="select-btn form-btn on" value="F">여성</button></li>
 							<li><button id="male" class="select-btn form-btn" value="M">남성</button></li>
 						</ul>
-						<div class="custom-control custom-radio">
+						<!-- <div class="custom-control custom-radio">
 							<input id="female" name="sex" type="radio" class="custom-control-input" value="F"> <label
 								class="custom-control-label" for="female">여성</label></div>
 						<div class="custom-control custom-radio">
 							<input id="male" name="sex" type="radio" class="custom-control-input" value="M"> <label
-								class="custom-control-label" for="male">남성</label> </div>
+								class="custom-control-label" for="male">남성</label> </div> -->
 					</div>
 					<div class="mb-3">
 						<h5><b>국적</b>을 선택해주세요.</h5>
-						<ul id="q2" class="a clearfix">
+						<ul id="q2" class="a clearfix  select-box3">
 							<li class="wd-25"><button id="KOREA" class="select-btn form-btn" value="KOREA">한국</button></li>
 							<li class="wd-25"><button id="CHINA" class="select-btn form-btn" value="CHINA">중국</button></li>
 							<li class="wd-25 right-end"><button id="JAPAN" class="select-btn form-btn" value="JAPAN">일본</button></li>
@@ -344,7 +344,7 @@
 							<li class="wd-25 right-end"><button id="US" class="select-btn form-btn" value="US">북미</button></li>
 							<li class="wd-25"><button id="ETC" class="select-btn form-btn" value="ETC">기타</button></li>
 						</ul>
-						<select class="custom-select d-block w-100" id="country" name="country" required="">
+						<!-- <select class="custom-select d-block w-100" id="country" name="country" required="">
 							<option value="">선택...</option>
 							<option value="KOREA">한국</option>
 							<option value="CHINA">중국</option>
@@ -353,7 +353,7 @@
 							<option value="EURO">유럽지역</option>
 							<option value="US">북미지역</option>
 							<option value="ETC">기타</option>
-						</select>
+						</select> -->
 						<div class="invalid-feedback"> Please select a valid country. </div>
 					</div>
 
@@ -368,14 +368,14 @@
               	<h4 class="mb-3"><b>셀프 진단 항목</b></h4>-->
 					<div class="mb-3">
 						<h5><b>피부타입</b>을 선택해주십시오.</h5>
-						<ul id="q2" class="a clearfix">
+						<ul id="q2" class="a clearfix select-box2">
 							<li class="wd-25"><button id="KOREA" class="select-btn form-btn" value="skin01">건성 : 세안직후 피부가 당긴다</button></li>
 							<li class="wd-25"><button id="CHINA" class="select-btn form-btn" value="skin02">중성 : 건성과 지성의 사이</button></li>
 							<li class="wd-25"><button id="JAPAN" class="select-btn form-btn" value="skin03">지성 : 세안 3시간 내에 기름이 돈다</button></li>
 							<li class="wd-25"><button id="EASIA" class="select-btn form-btn" value="skin04">복합성 : 건성 + 지성</button></li>
 							<li class="wd-25"><button id="EURO" class="select-btn form-btn" value="skin05">민감성 : 피부가 종종 붉고, 가렵고, 따갑다</button></li>
 						</ul>
-						<div class="custom-control custom-checkbox">
+						<!-- <div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="skin01" id="skin01" value="1">
 							<label class="custom-control-label" for="skin01">건성 : 세안직후 피부가 당긴다</label> </div>
 						<div class="custom-control custom-checkbox">
@@ -389,11 +389,11 @@
 							<label class="custom-control-label" for="skin04">복합성 : 건성 + 지성</label> </div>
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="skin05" id="skin05" value="1">
-							<label class="custom-control-label" for="skin05">민감성 : 피부가 종종 붉고, 가렵고, 따갑다</label> </div>
+							<label class="custom-control-label" for="skin05">민감성 : 피부가 종종 붉고, 가렵고, 따갑다</label> </div> -->
 					</div>
 					<div class="mb-3">
 						<h5><b>피부고민</b>을 선택해주세요.(중복선택 가능)</h5>
-						<ul id="q2" class="a clearfix">
+						<ul id="q2" class="a clearfix  select-box3">
 							<li class="wd-25"><button id="KOREA" class="select-btn form-btn" value="trouble01">트러블</button></li>
 							<li class="wd-25"><button id="CHINA" class="select-btn form-btn" value="trouble02">홍조</button></li>
 							<li class="wd-25"><button id="JAPAN" class="select-btn form-btn" value="trouble03">모공</button></li>
@@ -404,7 +404,7 @@
 							<li class="wd-25"><button id="EURO" class="select-btn form-btn" value="trouble10">다크서클</button></li>
 						</ul>
 
-						<div class="custom-control custom-checkbox">
+						<!-- <div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="trouble01" id="trouble01"
 								value="1"> <label class="custom-control-label" for="trouble01">트러블</label> </div>
 						<div class="custom-control custom-checkbox">
@@ -415,27 +415,27 @@
 								value="1"> <label class="custom-control-label" for="trouble03">모공</label> </div>
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="trouble04" id="trouble04"
-								value="1"> <label class="custom-control-label" for="trouble04">피부톤</label> </div>
+								value="1"> <label class="custom-control-label" for="trouble04">피부톤</label> </div> -->
 						<!-- 
                   <div class="custom-control custom-checkbox">                                            
                     <input type="checkbox" class="custom-control-input" name="trouble05" id="trouble05" value="1"> <label class="custom-control-label" for="trouble05">아토피</label> </div>
    -->
-						<div class="custom-control custom-checkbox">
+						<!-- <div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="trouble06" id="trouble06"
 								value="1"> <label class="custom-control-label" for="trouble06">주름</label> </div>
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="trouble07" id="trouble07"
-								value="1"> <label class="custom-control-label" for="trouble07">팔자주름</label> </div>
+								value="1"> <label class="custom-control-label" for="trouble07">팔자주름</label> </div> -->
 						<!--
                   <div class="custom-control custom-checkbox">                                            
                     <input type="checkbox" class="custom-control-input" name="trouble08" id="trouble08" value="1"> <label class="custom-control-label" for="trouble08">탄력</label> </div>
   -->
-						<div class="custom-control custom-checkbox">
+						<!-- <div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="trouble09" id="trouble09"
 								value="1"> <label class="custom-control-label" for="trouble09">색소침착</label> </div>
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" class="custom-control-input" name="trouble10" id="trouble10"
-								value="1"> <label class="custom-control-label" for="trouble10">다크서클</label> </div>
+								value="1"> <label class="custom-control-label" for="trouble10">다크서클</label> </div> -->
 					</div>
 					<hr class="mb-1">
 					<div class="mb-">
