@@ -438,30 +438,11 @@
 								value="1"> <label class="custom-control-label" for="trouble10">다크서클</label> </div> -->
 					</div>
 					<hr class="mb-1">
-					<div class="mb-">
-						<div class="agree_tit">
-							<input type="checkbox" name="chk_agree_all" id="inp_chk00" class="inp_chk type01 big">
-							<label for="inp_chk00"><span class="va-b">전체 동의</span></label>
-						</div>
-						<ul class="lst_shdbox clearfix">
-							<li>
-								<input type="checkbox" name="chk_agree" id="inp_chk01" class="inp_chk type01 must chkYn" data-agree="1">
-								<label for="inp_chk01"><span class="ellipsis va-b">이용약관 동의(필수)</span></label>
-								<a href="/policy.do" class="btnLink type03">내용보기&gt;</a>
-							</li>
-							<li>
-								<input type="checkbox" name="chk_agree" id="inp_chk02" class="inp_chk type01 must chkYn" data-agree="2">
-								<label for="inp_chk02"><span class="ellipsis va-b">개인정보 수집 및 이용 동의(필수)</span></label>
-								<a href="/personalPolicy.do" class="btnLink type03">내용보기&gt;</a>
-							</li>
-							<li>
-								<input type="checkbox" name="chk_agree" id="inp_chk03" class="inp_chk type01 chkYn" data-agree="3">
-								<label for="inp_chk03"><span class="ellipsis va-b">이벤트 등 알림 메일 수신(선택)</span></label>
-							</li>
-						</ul>
-					</div>
-					<input type="hidden" name="chkAgree" id="chkAgree" value="">
 
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" name="agreeall" id="agreeall" value="1"><label
+							class="custom-control-label" for="agreeall">전체 동의</label>
+					</div>
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" name="ageover" id="ageover" value="1"><label
 							class="custom-control-label" for="ageover">(필수) 만 14세 이상 확인</label>

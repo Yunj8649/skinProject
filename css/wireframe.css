@@ -9579,12 +9579,6 @@ body {
 	justify-content: space-between;
 }
 .clearfix:after{content:'';display:block;clear:both;}
-.select-box2 {
-
-}
-.select-box3 {
-
-}
 .form-btn {
 	padding: 0.8rem;
 	font-family: NotoSansCJKkr;
@@ -9599,22 +9593,23 @@ body {
 	border-radius: 32.5px !important;
   	background-color: #e6e6e6;
 }
+.select-box2>li {
+	width: 48%;
+}
+.select-box3>li {
+	width: 33.33%;
+}
 .mb-3 .on {
 	font-weight: bold;
 	background-color: #a7574b;
 	color: #ffffff;
 }
 .mb-3 ul {
+	display: inline-block;
 	width: 100%;
 	list-style: none;
 	padding-left: 0px;
 }
-.mb-3 ul>li {
-	float: left;
-	width: 33.33%;
-	margin: 0 1rem 1rem 0;
-}
-
 .form-control {
 	display: block;
 	width: 100%;
