@@ -252,8 +252,9 @@ th {
 
 label {
 	display: inline-block;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.64rem;
 	text-align: center;
+	width: 100%;
 }
 
 button {
@@ -391,7 +392,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-	margin-bottom: 0.75rem;
+	margin-bottom: 1.48rem;
 	font-family: NotoSansCJKkr, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-weight: 200;
 	line-height: 1.2;
@@ -420,8 +421,8 @@ h4,
 
 h5,
 .h5 {
-	font-size: 25px;
-	/* font-size: 1.25rem;  */
+	/* font-size: 25px; */
+	font-size: 1.25rem; 
 }
 
 h6,
@@ -664,8 +665,8 @@ pre code {
 	position: relative;
 	width: 100%;
 	min-height: 1px;
-	padding-right: 5rem;
-	padding-left: 5rem;
+	padding-right: 15px;
+	padding-left: 15px;
 }
 
 .col {
@@ -1909,16 +1910,6 @@ select.form-control:focus::-ms-value {
 .form-control-range {
 	display: block;
 	width: 100%;
-}
-
-.form-placeholder {
-	font-size: 14px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	line-height: 3.43;
-	letter-spacing: normal;
-	color: #000000;
 }
 
 .col-form-label {
@@ -9583,6 +9574,9 @@ body {
 /* 추가한 css */
 .form-image-box {
 	display: inline-flex;
+	width: 100%;
+	margin-bottom: 3.64rem !important;
+	justify-content: space-between;
 }
 .clearfix:after{content:'';display:block;clear:both;}
 .form-btn {
@@ -9632,36 +9626,56 @@ body {
 	/* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
 }
 
+.form-placeholder {
+	font-size: 0.56rem;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 3.43;
+	letter-spacing: normal;
+	color: #000000;
+}
+
 .front-img-btn {
-	width: 6.389rem;
-	height: 6.389rem;
+	width: 6rem;
+	height: 6rem;
 	border-radius: 7px;
-	border: solid 0.5px #b9b9b9;
+	border: dashed 0.5px #b9b9b9;
 	background-image: url('../img/group-2-copy-3.png');
 	background-repeat: no-repeat;
-	background-position: center;	
+	background-position: center;
+	margin: auto;	
+	padding: 1.6rem;
 }
 
 @media (min-width: 576px) {
-	.front-img-btn {
+	/* .front-img-btn {
 		background-image: url('../img/group-2-copy-3.png');
-	}
+	} */
 }
 
 @media (min-width: 768px) {
-	.front-img-btn {
+	/* .front-img-btn {
 		background-image: url('../img/group-2-copy-3@2x.png');
-	}
+	} */
 }
 
 @media (min-width: 992px) {
-	.front-img-btn {
-		background-image: url('../img/group-2-copy-3@2x.png');
+	.col-md-8 {
+		padding-right: 6.24rem;
+    	padding-left: 6.24rem;	
 	}
+	/* .front-img-btn {
+		background-image: url('../img/group-2-copy-3@3x.png');
+	} */
 }
 
 @media (min-width: 1200px) {
-	.front-img-btn {
-		background-image: url('../img/group-2-copy-3@3x.png');
+	.col-md-8 {
+		padding-right: 6.24rem;
+    	padding-left: 6.24rem;	
 	}
-}
+	/* .front-img-btn {
+		background-image: url('../img/group-2-copy-3@3x.png');
+	} */
+} 
